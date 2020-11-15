@@ -1,0 +1,954 @@
+digraph Генеалогия {
+// общее описалово
+	fontname=Helvetica;
+	// * Линии
+	splines=curved;
+	//splines=spline;
+	splines=true;
+	ratio=fill;
+	//size="70,10"
+	//page="8.5,11"
+
+	// 1 - dot, без "LR" будет сверху вниз
+	rankdir=LR;
+
+	// 2 - дерево во все стороны
+	//layout="fdp"; 
+	mindist=100;
+
+	// 3 - ещё что-то
+	//layout="neato";
+	//layout="twopi"; // опачки, похоже на правду
+	minlen=150;
+	overlap=prism;		
+
+// *** ближайшие -- готово
+	// люди #a0f008
+		subgraph clusterБлижайшие{ color=white
+		"БарагичевКЕ"	[style=filled fillcolor=greenyellow shape=box label="Барагичев \n Константин Евгеньевич \n р. 19.04.1990"]
+		"МинжулинаОГ"	[style=filled fillcolor=aquamarine shape=box label="Барагичева \n Оксана Геннадьевна \n р. 25.03.1988"]
+		"БарагичевДК"	[style=filled fillcolor=greenyellow shape=box label="Барагичев \n Дмитрий Константинович \n р. 09.10.2019"]
+		}
+		subgraph clusterСоСтороныКонстантина{
+		"БарагичевЕА"	[style=filled fillcolor=yellow shape=box label="Барагичев \n Евгений Антонович \n р. 29.03.1961"]
+		"БарагичеваИС"	[style=filled fillcolor=yellow shape=box label="Барагичева \n Ирина Семёновна \n р. 23.11.1959"]
+		"КопыловСН" 	[style=filled fillcolor=yellow shape=box label="Копылов \n Семён Николаевич \n р. 09.08.1928"]
+		"КопыловаЛА"	[style=filled fillcolor=yellow shape=box label="Копылова \n Любовь Алексеевна \n р. 02.09.1935"]
+		"КопыловЮС" 	[style=filled shape=box label="Копылов \n Юрий Семёнович \n р. 05.07.1963"]
+		"КопыловаМА"	[style=filled shape=box label="Копылова \n Марина Анатольевна \n р. 08.02.1965"]
+		"КопыловАЮ" 	[style=filled shape=box label="Копылов \n Алексей Юрьевич \n р. 11.10.1987"]
+		"КопыловаМЕ"	[style=filled shape=box label="Копылова \n Мария Евгеньевна \n р. 08.07.1987 "]
+		"КопыловаЕА" 	[style=filled shape=box label="Копылова \n Елизавета Алексеевна \n р. 15.07.2016"]
+		//"бывшийКопыловойМаши"	[style=filled shape=circle label="?"]
+		"КопыловаКарина"	[style=filled shape=box label="Копылова \n Карина \n р. 27.03.2006 "]
+		"БарагичевАИ" 	[style=filled fillcolor=yellow shape=box label="Барагичев 'Анатолий' \n Антон Иванович \n р. 17.04.1927 (оф. 1925) \n ум. 18.06.1993"]
+		"БарагичеваЛТ"	[style=filled fillcolor=yellow shape=box label="Барагичева \n Лидия Трофимовна \n р. 04.01.1930 \n ум. 15.05.2020"]
+		}
+		subgraph clusterСоСтороныОксаны{			
+		"МинжулинаОН"	[style=filled fillcolor=lightblue shape=box label="Минжулина \n Ольга Николаевна \n р. 23.04.1953"]
+		"МинжулинГМ" 	[style=filled fillcolor=lightblue shape=box label="Минжулин \n Геннадий Матвеевич \n р. 30.08.1952 \n ум. 15.05.2020"]
+		"МорозовАВ" 	[style=filled shape=box label="Морозов \n Алексей Владимирович \n р. 04.12.1986"]
+		"МорозоваАГ"	[style=filled shape=box label="Морозова \n Анастасия Геннадьевна \n р. 04.05.1987"]
+		"МорозовМА" 	[style=filled shape=box label="Морозов \n Михаил Алексеевич \n р. 29.01.2019"]
+		}
+
+	// союзы
+		subgraph clusterБлижайшие{ color=white
+			"бракБарагичевМинжулина" [style=filled fillcolor="#ff0000" shape=diamond label="+"]
+		}
+		"бракБарагичевКопылова" [style=filled fillcolor=white shape=diamond label="+"]
+		{"БарагичевКЕ" "МинжулинаОГ"} -> "бракБарагичевМинжулина"
+		"бракМинжулинВалова" [style=filled fillcolor=white shape=diamond label="+3"]			
+		{"МинжулинГМ" "МинжулинаОН"} -> "бракМинжулинВалова"
+		"бракМорозовМинжулина" [style=filled fillcolor=white shape=diamond label="+"]
+		{"МорозовАВ" "МорозоваАГ"} -> "бракМорозовМинжулина"
+		{"БарагичевЕА" "БарагичеваИС"} -> "бракБарагичевКопылова"
+		"бракКопыловКарлова" [style=filled fillcolor=white shape=diamond label="+"]
+		{"КопыловСН" "КопыловаЛА"} -> "бракКопыловКарлова"
+		"бракКопыловКрылова" [style=filled fillcolor=white shape=diamond label="+"]
+		{"КопыловЮС" "КопыловаМА"} -> "бракКопыловКрылова"
+		"бракКопыловаЛёшки" [style=filled fillcolor=white shape=diamond label="+"]
+		{"КопыловАЮ" "КопыловаМЕ"} -> "бракКопыловаЛёшки"
+		"бракКопыловойМаши1" [style=filled fillcolor=white shape=diamond label="+"]
+		{"КопыловаМЕ" /*"бывшийКопыловойМаши"*/} -> "бракКопыловойМаши1"		
+		subgraph clusterZ1{ color=white
+		"бракБарагичевХромушина" [style=filled fillcolor=white shape=diamond label="+"]
+		}
+		{"БарагичевАИ" "БарагичеваЛТ"} -> "бракБарагичевХромушина"
+		
+	// дети в союзах вне групп
+		"бракБарагичевМинжулина" -> "БарагичевДК"		
+	// дети в союзах
+		subgraph clusterСоСтороныКонстантина{ //color=white
+		"бракБарагичевКопылова" -> "БарагичевКЕ"
+		"бракКопыловКарлова" -> "БарагичеваИС"
+		"бракКопыловКарлова" -> "КопыловЮС"
+		"бракКопыловКрылова" -> "КопыловАЮ"
+		"бракКопыловаЛёшки" -> "КопыловаЕА"
+		"бракКопыловойМаши1" -> "КопыловаКарина"
+		"бракБарагичевХромушина" -> "БарагичевЕА"
+		}
+		subgraph clusterСоСтороныОксаны{ //color=white
+		"бракМинжулинВалова" -> "МинжулинаОГ"
+		"бракМинжулинВалова" -> "МорозоваАГ"
+		"бракМорозовМинжулина" -> "МорозовМА"
+		}
+
+// *** Барагичевы -- готово
+	subgraph clusterСоСтороныКонстантина{ 
+	// люди
+		subgraph clusterA{ style=dashed 
+		"БурковскийФ"	[style=filled fillcolor=yellow shape=box label="Бурковский \n Франц \n р. \n ум."]
+		"БарагичевИ"	[style=filled shape=box label="Барагичев \n Иван \n р. \n ум. хх.хх.193х"]
+		"БарагичеваМА"	[style=filled fillcolor=yellow shape=box label="Барагичева \n Мария Александровна \n р. хх.12.1903 (оф. 12.01) \n ум. 09.06.1986"]
+		subgraph clusterY{ style=dashed color=white		
+		"СонькинВ"	[style=filled shape=box label="Сонькин \n Василий Михайлович \n р. 28.01.1931 \n ум. 21.01.2007"]
+		"СонькинаАИ"	[style=filled shape=box label="Сонькина \n Анна Ивановна \n р. 05.02.1930 \n ум. 18.11.2006"]
+		"СонькинСВ"	[style=filled shape=box label="Сонькин \n Сергей Васильевич \n р. 14.03.1965"]
+		}
+		subgraph clusterX{ style=dashed color=white		
+		"ПанинскаяВИ"	[style=filled shape=box label="Панинская \n Валентина Ивановна \n р. 17.12.1925 \n ум. 24.02.2007"]
+		"ПанинскийН"	[style=filled shape=box label="Панинский \n Николай \n р. \n ум."]
+		"ЛаринаСН"	[style=filled shape=box label="Ларина \n Светлана Николаевна \n р. 18.06.196х"]
+		"СмоляковС"	[style=filled shape=box label="Смоляков \n Станислав \n р. \n ум."]
+		"СмоляковВС"	[style=filled shape=box label="Смоляков 'Вольдемар' \n Владимир Станиславович \n р. 01.08.19хх"]
+		"СмоляковаОА"	[style=filled shape=box label="Смолякова \n Ольга Андреевна \n р. "]
+		"СмоляковЕВ"	[style=filled shape=box label="Смоляков \n Евгений Владимирович \n р. 03.03.1969"]
+		"СмоляковаЮВ"	[style=filled shape=box label="Смолякова \n Юлия Владимировна \n р. "]
+		"СмоляковаСА"	[style=filled shape=box label="Смолякова \n Светлана Алексеевна \n р. "]
+		"ЛизинДВ"	[style=filled shape=box label="Лизин \n Денис Витальевич \n р. 19.хх.19хх"]
+		"ЛизинаЛД"	[style=filled shape=box label="Лизина \n Лика Денисовна \n р. 30.09.2006"]
+		"ЛизинИД"	[style=filled shape=box label="Лизин \n Илья Денисович \n р. 08.12.2010"]
+		"СмоляковПЕ"	[style=filled shape=box label="Смоляков\n Павел Евгеньевич \n р. 09.02.1988"]
+		"СмоляковВЕ"	[style=filled shape=box label="Смоляков \n Владимир Евгеньевич \n р. "]
+		"ЛаринИН"	[style=filled shape=box label="Ларин \n Иван Николаевич \n р. 08.12.196х"]
+		"ЛаринОИ"	[style=filled shape=box label="Ларин \n Олег Иванович \n р. 14.12.1987"]
+		"ЛаринАИ"	[style=filled shape=box label="Ларин \n Александр Иванович \n р. 25.05.1989"]
+		}
+		"БарагичеваАИ"	[style=filled shape=box label="Барагичева \n Антонина Ивановна \n р. \n ум. "]
+		subgraph clusterЛукашовы{ style=dashed color=white
+		"ЛукашоваМИ"	[style=filled shape=box label="Лукашова \n Мария Ивановна \n р. \n ум. хх.хх.198х"]
+		"ЛукашовАС"	[style=filled shape=box label="Лукашов \n Александр Семёнович \n р. \n ум. "]
+		"НиколайМужЛукашовой"	[style=filled shape=box label="Николай \n р. \n ум. "]
+		"ЛукашовВикА"	[style=filled shape=box label="Лукашов \n Виктор Александрович \n р. \n ум. "]
+		"ЛукашовГА"	[style=filled shape=box label="Лукашов \n Геннадий Александрович \n р. "]
+		"ЛукашовВлА"	[style=filled shape=box label="Лукашов \n Владимир Александрович \n р. \n ум. "]
+		"ЛукашовАнА"	[style=filled shape=box label="Лукашов \n Анатолий Александрович \n р. \n ум. "]
+		"ЛукашоваАнна"	[style=filled shape=box label="Лукашова \n Анна \n р. \n ум. хх.хх.2018"]
+		"ЛукашовСА"	[style=filled shape=box label="Лукашов \n Сергей Александрович \n р. \n ум. "]
+		"ЛукашовАлА"	[style=filled shape=box label="Лукашов \n Алексей Александрович \n р. \n ум. "]
+		"ЛукашоваЛ"	[style=filled shape=box label="Лукашова \n Людмила \n р. "]
+		"ЛукашовАВик"	[style=filled shape=box label="Лукашов \n Андрей Викторович \n р. "]
+		"ЛукашоваЮВ"	[style=filled shape=box label="Лукашова \n Юлия Викторовна \n р. "]
+		"ЛукашоваСвета"	[style=filled shape=box label="Лукашова \n Светлана \n р. "]
+		"ЛукашовОГ"	[style=filled shape=box label="Лукашов \n Олег Геннадьевич \n р. \n ум. "]
+		"ЛукашоваТО"	[style=filled shape=box label="Лукашова \n Татьяна Олеговна \n р. "]
+		"ЛукашоваАрина"	[style=filled shape=box label="Лукашова ? \n Арина ? \n р. "]
+		"СинкевичЕГ"	[style=filled shape=box label="Синкевич \n Елена Геннадьевна \n р. "]
+		"СинкевичЮрий"	[style=filled shape=box label="Синкевич \n Юрий \n р. "]
+		"СинкевичНЮ"	[style=filled shape=box label="Синкевич \n Никита Юрьевич \n р. "]
+		}
+
+	// союзы
+		subgraph clusterЛукашовы{ style=dashed color=white
+		"бракЛукашовОлег" [style=filled fillcolor=white shape=diamond label="+"]
+		{"ЛукашовОГ"} -> "бракЛукашовОлег"
+		"бракЛукашоваТатьяна" [style=filled fillcolor=white shape=diamond label="+"]
+		{"ЛукашоваТО"} -> "бракЛукашоваТатьяна"
+		"бракСинкевичЛукашова" [style=filled fillcolor=white shape=diamond label="+"]
+		{"СинкевичЮрий" "СинкевичЕГ"} -> "бракСинкевичЛукашова"
+		"бракЛукашовГеннадий" [style=filled fillcolor=white shape=diamond label="+"]
+		{"ЛукашовГА" "ЛукашоваСвета"} -> "бракЛукашовГеннадий"
+		"бракЛукашовАнатолий" [style=filled fillcolor=white shape=diamond label="+"]
+		{"ЛукашовАнА" "ЛукашоваАнна"} -> "бракЛукашовАнатолий"
+		"бракЛукашовВиктор" [style=filled fillcolor=white shape=diamond label="+"]
+		{"ЛукашовВикА" "ЛукашоваЛ"} -> "бракЛукашовВиктор"
+		"бракЛукашовБарагичева" [style=filled fillcolor=white shape=diamond label="+"]
+		{"ЛукашовАС" "ЛукашоваМИ"} -> "бракЛукашовБарагичева"
+		"бракЛукашовойМарии" [style=filled fillcolor=white shape=diamond label="+"]
+		{"НиколайМужЛукашовой" "ЛукашоваМИ"} -> "бракЛукашовойМарии"
+		}
+		subgraph clusterX{ style=dashed color=white		
+		"бракЛаринПанинская" [style=filled fillcolor=white shape=diamond label="+"]
+		{"ЛаринаСН" "ЛаринИН"} -> "бракЛаринПанинская"
+		"бракСмоляковВольдемар" [style=filled fillcolor=white shape=diamond label="+"]
+		{"СмоляковВС" "СмоляковаОА"} -> "бракСмоляковВольдемар"
+		"бракЛизинСмолякова" [style=filled fillcolor=white shape=diamond label="+"]
+		{"ЛизинДВ" "СмоляковаЮВ"} -> "бракЛизинСмолякова"
+		"бракСмоляковЕвгений" [style=filled fillcolor=white shape=diamond label="+"]
+		{"СмоляковЕВ" "СмоляковаСА"} -> "бракСмоляковЕвгений"
+		"бракСмоляковБарагичева" [style=filled fillcolor=white shape=diamond label="+"]
+		{"СмоляковС" "ПанинскаяВИ"} -> "бракСмоляковБарагичева"
+		"бракПанинскийБарагичева" [style=filled fillcolor=white shape=diamond label="+"]
+		{"ПанинскийН" "ПанинскаяВИ"} -> "бракПанинскийБарагичева"
+		}
+		subgraph clusterY{ style=dashed color=white
+ 		"бракСонькинБарагичева" [style=filled fillcolor=white shape=diamond label="+"]
+		{"СонькинВ" "СонькинаАИ"} -> "бракСонькинБарагичева"
+		}
+		"бракБурковские" [style=filled fillcolor=white shape=diamond label="+"]
+		{"БарагичеваМА" "БурковскийФ"} -> "бракБурковские"
+		"бракБарагичевБурковская" [style=filled fillcolor=white shape=diamond label="+"]
+		{"БарагичевИ" "БарагичеваМА"} -> "бракБарагичевБурковская"
+
+	// дети
+		"бракЛукашовОлег" -> "ЛукашоваТО"
+		"бракЛукашоваТатьяна" -> "ЛукашоваАрина"
+		"бракСинкевичЛукашова" -> "СинкевичНЮ"
+		"бракЛукашовГеннадий" -> "ЛукашовОГ"
+		"бракЛукашовГеннадий" -> "СинкевичЕГ"
+		"бракЛукашовВиктор" -> "ЛукашоваЮВ"
+		"бракЛукашовВиктор" -> "ЛукашовАВик"
+		"бракЛукашовБарагичева" -> "ЛукашовВикА"
+		"бракЛукашовБарагичева" -> "ЛукашовГА"
+		"бракЛукашовБарагичева" -> "ЛукашовВлА"
+		"бракЛукашовБарагичева" -> "ЛукашовАнА"
+		"бракЛукашовБарагичева" -> "ЛукашовСА"
+		"бракЛукашовБарагичева" -> "ЛукашовАлА"
+		"бракЛаринПанинская" -> "ЛаринАИ"
+		"бракЛаринПанинская" -> "ЛаринОИ"
+		"бракСмоляковВольдемар" -> "СмоляковЕВ"
+		"бракСмоляковВольдемар" -> "СмоляковаЮВ"
+		"бракСмоляковЕвгений" -> "СмоляковПЕ"
+		"бракСмоляковЕвгений" -> "СмоляковВЕ"
+		"бракЛизинСмолякова" -> "ЛизинИД"
+		"бракЛизинСмолякова" -> "ЛизинаЛД"
+		"бракСмоляковБарагичева" -> "СмоляковВС"
+		"бракПанинскийБарагичева" -> "ЛаринаСН"
+		"бракБурковские" -> "ПанинскаяВИ"
+		"бракБурковские" -> "БарагичеваАИ"
+		"бракБурковские" -> "ЛукашоваМИ"
+		"бракБарагичевБурковская" -> "СонькинаАИ"
+		"бракСонькинБарагичева" -> "СонькинСВ"
+		"бракБурковские" -> "БарагичевАИ"
+	}
+
+// *** Хромушины -- готово
+	// люди
+		subgraph clusterZ1{ color=white
+		subgraph clusterB{ style=dashed  color=black
+ 		"ХромушенкоЕ"	[style=filled fillcolor=yellow shape=box label="Хромушенко \n Евстифей \n р. \n ум. "]
+ 		"ХромушенкоЕк"	[style=filled fillcolor=yellow shape=box label="Хромушенко \n Екатерина \n р. \n ум. "]
+		"ЛадынскийЛ"	[style=filled fillcolor=yellow shape=box label="Ладынский \n Леонтий \n р. \n ум. "]
+		"ЛадынскаяХ"	[style=filled fillcolor=yellow shape=box label="Ладынская 'Хавронья' \n Феврония Николаевна \n р. \n ум. "]
+		"ХромушинТЕ"	[style=filled fillcolor=yellow shape=box label="Хромушин \n Трофим Евстифеевич \n р. хх.хх.1905 \n ум. 11.07.1975"]
+		"ХромушинаМЛ"	[style=filled fillcolor=yellow shape=box label="Хромушина \n Марина Леонтьевна \n р. 22.08.1910 (оф. 1909) \n ум. 10.07.1978"]
+		"ХромушинаЕЕ"	[style=filled shape=box label="Хромушина ?\n Евдокия Евстифеевна \n р. \n ум."]
+		"Хромушина_дочьЕвд"	[style=filled shape=box label="(дочь?)"]
+		"ХромушинМих"	[style=filled shape=box label="Хромушин ?\n Михаил \n р."]
+		"Хромушин_сынМ"	[style=filled shape=box label="Хромушин ?\n ? Михайлович \n р."]
+		"Хромушина_дочьМ"	[style=filled shape=box label="Хромушина ?\n ? Михайловна \n р."]
+		"ХромушинНик"	[style=filled shape=box label="Хромушин ?\n Николай \n р."]
+		"ХромушинаНН"	[style=filled shape=box label="Хромушина ?\n Наталья Николаевна \n р."]
+		"ХромушинЛТ"	[style=filled shape=box label="Хромушин \n Леонид Трофимович \n р. \n ум. "]
+		"ХромушинаН"	[style=filled shape=box label="Хромушина \n Надежда \n р. \n ум. "]
+		"ХромушинОЛ"	[style=filled shape=box label="Хромушин \n Олег Леонидович \n р. \n ум. хх.12.1986"]
+		"ХромушинаТ"	[style=filled shape=box label="Хромушина \n Татьяна \n р. \n ум. хх.12.2016"]
+		"ХромушинаНО"	[style=filled shape=box label="Хромушина ? \n Наталья Олеговна \n р. "]
+		"ХромушинаСО"	[style=filled shape=box label="Хромушина ? \n Светлана Олеговна \n р. "]
+		"ХромушинВс"	[style=filled shape=box label="Хромушин ? \n Владислав \n р."]
+		"ХромушинИ"	[style=filled shape=box label="Хромушин ? \n Иван \n р."]
+		"СафоничеваВТ"	[style=filled shape=box label="Сафоничева \n Валентина Трофимовна \n р. \n ум. "]
+		"СафоничевПГ"	[style=filled shape=box label="Сафоничев \n Пётр Герасимович \n р. 13.06.1923 \n ум. 21.12.1973"]
+		"СафоничевСП"	[style=filled shape=box label="Сафоничев \n Сергей Петрович \n р. 26.03.1954 \n ум. 18.04.2020"]
+		"СафоничевВП"	[style=filled shape=box label="Сафоничев \n Владимир Петрович \n р. \n ум. "]
+		"СафоничеваВал_В"	[style=filled shape=box label="Сафоничева \n Валентина \n р. "]
+		"СафоничеваЛл"	[style=filled shape=box label="Сафоничева \n Лилия \n р. "]
+		"СафоничевЕВ"	[style=filled shape=box label="Сафоничев \n Евгений Владимирович \n р. "]
+		"СафоничевДВ"	[style=filled shape=box label="Сафоничев \n Дмитрий Владимирович \n р. "]
+		"СафоничеваСВ"	[style=filled shape=box label="Сафоничева \n Светлана Владимировна \n р. "]
+		"СафоничеваО"	[style=filled shape=box label="Сафоничева \n Ольга \n р. "]
+		"СафоничеваВал_С"	[style=filled shape=box label="Сафоничева \n Валентина \n р. "]
+		"Сафоничев1Серг"	[style=filled shape=box label="Сафоничев \n №1 \n р. "]
+		"Сафоничев2Серг"	[style=filled shape=box label="Сафоничев \n №2 \n р. "]
+		"КуприяноваЕС"	[style=filled shape=box label="Куприянова \n Елена Сергеевна \n р. "]
+		"КуприяновА"	[style=filled shape=box label="Куприянов \n Анатолий \n р. "]
+		"КуприяновДА"	[style=filled shape=box label="Куприянов \n Дмитрий Анатольевич \n р. хх.хх.1994"]
+		"ЛадынскаяНЛ"	[style=filled shape=box label="Ладынская \n Наталья Леонтьевна \n р. \n ум. "]
+		"ЛадынскийАндЛ"	[style=filled shape=box label="Ладынский \n Андрей Леонтьевич \n р. \n ум. "]
+		"ЛадынскийВасЛ"	[style=filled shape=box label="Ладынский \n Василий Леонтьевич \n р. \n ум. хх.хх.194х"]
+		"ЛадынскийИвЛ"	[style=filled shape=box label="Ладынский \n Иван Леонтьевич \n р. хх.хх.192х \n ум. хх.хх.194х"]
+		"ЛадынскаяНЯ"	[style=filled shape=box label="Ладынская (Матвеева) \n Нина Яковлевна \n р. хх.11.1915 \n ум. "]	
+
+	// союзы
+		subgraph clusterZ167{ color=white
+		"бракКуприяновСафоничева" [style=filled fillcolor=white shape=diamond label="+"]
+		{"КуприяновА" "КуприяноваЕС"} -> "бракКуприяновСафоничева"
+		"бракСафоничевСергейОл" [style=filled fillcolor=white shape=diamond label="+"]
+		{"СафоничевСП" "СафоничеваО"} -> "бракСафоничевСергейОл"
+		"бракСафоничевСергейВал" [style=filled fillcolor=white shape=diamond label="+"]
+		{"СафоничевСП" "СафоничеваВал_С"} -> "бракСафоничевСергейВал"
+		}
+		subgraph clusterZ168{ color=white
+		"бракСафоничевВладимирЛл" [style=filled fillcolor=white shape=diamond label="+"]
+		{"СафоничевВП" "СафоничеваЛл"} -> "бракСафоничевВладимирЛл"
+		"бракСафоничевВладимирВал" [style=filled fillcolor=white shape=diamond label="+"]
+		{"СафоничевВП" "СафоничеваВал_В"} -> "бракСафоничевВладимирВал"
+		}
+		"бракСафоничевХромушина" [style=filled fillcolor=white shape=diamond label="+"]
+		{"СафоничевПГ" "СафоничеваВТ"} -> "бракСафоничевХромушина"
+		"бракХромушинаНО" [style=filled fillcolor=white shape=diamond label="+"]
+		{"ХромушинаНО"} -> "бракХромушинаНО"
+		"бракХромушинаСО" [style=filled fillcolor=white shape=diamond label="+"]
+		{"ХромушинаСО"} -> "бракХромушинаСО"
+		"бракХромушинОлег" [style=filled fillcolor=white shape=diamond label="+"]
+		{"ХромушинОЛ" "ХромушинаТ"} -> "бракХромушинОлег"
+		"бракХромушинЛеонид" [style=filled fillcolor=white shape=diamond label="+"]
+		{"ХромушинЛТ" "ХромушинаН"} -> "бракХромушинЛеонид"
+		"бракХромушинойЕвдокии" [style=filled fillcolor=white shape=diamond label="+"]
+		{"ХромушинаЕЕ"} -> "бракХромушинойЕвдокии"
+		"бракХромушинаМих" [style=filled fillcolor=white shape=diamond label="+"]
+		{"ХромушинМих"} -> "бракХромушинаМих"
+		"бракХромушинаНик" [style=filled fillcolor=white shape=diamond label="+"]
+		{"ХромушинНик"} -> "бракХромушинаНик"
+		"бракЛадынский" [style=filled fillcolor=white shape=diamond label="+"]
+		{"ЛадынскийЛ" "ЛадынскаяХ"} -> "бракЛадынский"
+		"бракХромушенко1" [style=filled fillcolor=white shape=diamond label="+1"]
+		{"ХромушенкоЕ"} -> "бракХромушенко1"
+		"бракХромушенко2" [style=filled fillcolor=white shape=diamond label="+2"]
+		{"ХромушенкоЕ" "ХромушенкоЕк"} -> "бракХромушенко2"
+		"бракХромушенкоЛадынская" [style=filled fillcolor=white shape=diamond label="+"]
+		{"ХромушинТЕ" "ХромушинаМЛ"} -> "бракХромушенкоЛадынская"
+		"бракЛадынскийМатвеева" [style=filled fillcolor=white shape=diamond label="+"]
+		{"ЛадынскийВасЛ" "ЛадынскаяНЯ"} -> "бракЛадынскийМатвеева"
+
+	// дети
+		"бракКуприяновСафоничева" -> "КуприяновДА"
+		"бракСафоничевСергейВал" -> "КуприяноваЕС"
+		"бракСафоничевСергейОл" -> "Сафоничев1Серг"
+		"бракСафоничевСергейОл" -> "Сафоничев2Серг"
+		"бракСафоничевВладимирЛл" -> "СафоничеваСВ"
+		"бракСафоничевВладимирЛл" -> "СафоничевДВ"
+		"бракСафоничевВладимирЛл" -> "СафоничевЕВ"
+		"бракСафоничевХромушина" -> "СафоничевСП"
+		"бракСафоничевХромушина" -> "СафоничевВП"
+		"бракХромушинаМих" -> "Хромушина_дочьМ"
+		"бракХромушинаМих" -> "Хромушин_сынМ"
+		"бракХромушинаНик" -> "ХромушинаНН"
+		"бракХромушинойЕвдокии" -> "ХромушинМих"
+		"бракХромушинойЕвдокии" -> "ХромушинНик"
+		"бракХромушинойЕвдокии" -> "Хромушина_дочьЕвд"
+		"бракХромушинЛеонид" -> "ХромушинОЛ"
+		"бракХромушинОлег" -> "ХромушинаСО"
+		"бракХромушинОлег" -> "ХромушинаНО"
+		"бракХромушинаСО" -> "ХромушинИ"
+		"бракХромушинаНО" -> "ХромушинВс"
+		"бракХромушенкоЛадынская" -> "ХромушинЛТ"
+		"бракХромушенкоЛадынская" -> "БарагичеваЛТ"
+		"бракХромушенкоЛадынская" -> "СафоничеваВТ"
+		"бракЛадынский" -> "ЛадынскийАндЛ"
+		"бракЛадынский" -> "ЛадынскийВасЛ"
+		"бракЛадынский" -> "ЛадынскийИвЛ"
+		"бракЛадынский" -> "ЛадынскаяНЛ"
+		"бракЛадынский" -> "ХромушинаМЛ"
+		"бракХромушенко1" -> "ХромушинТЕ"
+		"бракХромушенко1" -> "ХромушинаЕЕ"
+		}
+	}	
+
+// *** Матвеевы -- готово
+	// люди
+		subgraph clusterZ1{ color=white
+		subgraph clusterZ{ style=dashed color=black
+ 		"МатвеевЯков"	[style=filled shape=box label="Матвеев \n Яков \n р. \n ум. "]
+		"МатвеевИвЯк"	[style=filled shape=box label="Матвеев \n Иван Яковлевич \n р. 14.04.1925 \n ум. 06.06.1993 "]
+		"МатвеевЕвЯк"	[style=filled shape=box label="Матвеев \n Евгений Яковлевич \n р. 15.11.1928 "]
+		"МатвееваЕИ"	[style=filled shape=box label="Матвеева \n Екатерина Ивановна \n р. 01.10.1932"]
+		"МатвееваИИ"	[style=filled shape=box label="Матвеева \n Ирина Ивановна \n р. 12.12.1960"]
+		"КоноваловОА"	[style=filled shape=box label="Коновалов \n Олег Анатольевич \n р. 14.10.1960 "]
+		"КоноваловВО"	[style=filled shape=box label="Коновалов \n Владислав Олегович \n р. 07.06.1994 "]
+
+	// союзы
+		"бракМатвеевИ" [style=filled fillcolor=white shape=diamond label="+"]
+		{"МатвеевИвЯк" "МатвееваЕИ"} -> "бракМатвеевИ"
+		"бракМатвеевЯ" [style=filled fillcolor=white shape=diamond label="+"]
+		{"МатвеевЯков"} -> "бракМатвеевЯ"
+		"бракКоноваловМатвеева" [style=filled fillcolor=white shape=diamond label="+"]
+		{"КоноваловОА" "МатвееваИИ"} -> "бракКоноваловМатвеева"
+
+	// дети	
+		"бракМатвеевЯ" -> "МатвеевИвЯк"
+		"бракМатвеевЯ" -> "МатвеевЕвЯк"
+		"бракМатвеевЯ" -> "ЛадынскаяНЯ"
+		"бракМатвеевИ" -> "МатвееваИИ"
+		"бракКоноваловМатвеева" -> "КоноваловВО"
+		}}
+
+// *** Маркины-Карловы 
+	// люди	
+		subgraph clusterD{ style=dashed
+		"МаркинГ"	[style=filled fillcolor=yellow shape=box label="Маркин \n  Григорий \n р. \n ум."]
+		"МаркинаАк"	[style=filled fillcolor=yellow shape=box label="Маркина \n  Акулина \n р. \n ум."]
+		subgraph clusterЛюбовиАлексеевныРодня{ style=dotted "КопыловаЛА" color=white
+		subgraph clusterДетиКсении{ style=dotted "КопыловаЛА" color=white
+		"КарловВА"	[style=filled shape=box label="Карлов \n Владимир Алексеевич \n р. 26.02.1932 \n ум. 14.11.1965 "]
+		"КарловаА"	[style=filled shape=box label="Карлова \n Александра \n р. \n ум."]
+		"ХапатнюкВ"	[style=filled shape=box label="Хапатнюк \n Виктор \n р. \n ум."]
+		"ХапатнюкНА"	[style=filled shape=box label="Хапатнюк \n Нина Алексеевна \n р. 19.11.1929 \n ум. 15.01.2008 "]
+		}
+		"МаркинАкМ"	[style=filled shape=box label="Маркин \n  Александр Михайлович \n р. \n ум."]
+		"МаркинВлМ"	[style=filled shape=box label="Маркин \n Владимир Михайлович \n р. \n ум."]
+		"МаркинЮМ"	[style=filled shape=box label="Маркин \n  Юрий Михайлович \n р. \n ум."]
+		"МаркинаАтМ"	[style=filled shape=box label="Маркина \n Антонина Михайловна \n р. \n ум."]
+		"МаркинаСК"	[style=filled shape=box label="Маркина ? \n Светлана Кузьминична \n р. \n ум."]
+		"МаркинаГК"	[style=filled shape=box label="Маркина ? \n Галина Кузьминична \n р. \n ум."]
+		"МаркинГК"	[style=filled shape=box label="Маркин ? \n Геннадий Кузьмич \n р. \n ум."]
+		}
+		"НазаренкоС"	[style=filled shape=box label=" Назаренко \n  Сергей \n р. \n ум."]
+		"НазаренкоМГ"	[style=filled shape=box label="Назаренко \n Мария Григорьевна \n р. \n ум."]
+		"МаркинМГ"	[style=filled shape=box label="Маркин \n Михаил Григорьевич \n р. \n ум."]
+		"МаркинаАл"	[style=filled shape=box label="Маркина \n  Александра \n р. \n ум."]
+		"МаркинАГ"	[style=filled shape=box label="Маркин \n Алексей Григорьевич \n р. \n ум."]
+		"Домна"	[style=filled shape=box label="Маркина ? \n  Домна \n р. \n ум."]
+		"Кузьма"	[style=filled shape=box label=" ? \n  Кузьма \n р. \n ум."]
+		"КарловАН"	[style=filled fillcolor=yellow fillcolor=yellow shape=box label="Карлов \n Алексей Николаевич \n р. 07.11.1896 \n ум. 03.09.1964 "]
+		"КарловаКГ"	[style=filled fillcolor=yellow shape=box label="Карлова \n Ксения Григорьевна \n р. 15.01.1901 \n ум. 09.08.1978 "]
+		"МаркинаМар"	[style=filled shape=box label="Маркина \n  Мария \n р. \n ум."]
+		subgraph clusterНазаренко{ style=dotted color=white
+		"НазаренкоЗС"	[style=filled shape=box label="Назаренко \n Зоя Сергеевна \n р. хх.хх.1935 "]
+		"НазаренкоВС"	[style=filled shape=box label="Назаренко \n Виктор Сергеевич \n р. хх.хх.1938 "]
+		"НазаренкоЭмма"	[style=filled shape=box label="Назаренко \n Эмма \n р. хх.хх.1940 "]
+		"ЛимайкинаТС"	[style=filled shape=box label="Лимайкина \n Тамара Сергеевна \n р. хх.хх.1939 "]
+		"ЛимайкинВ"	[style=filled shape=box label="Лимайкин \n Виктор \n р. хх.хх.1939 "]
+		}
+		subgraph clusterКарловыБудкевич{ style=dotted color=white
+		"КарловНик"	[style=filled fillcolor=yellow shape=box label="Карлов \n Николай \n р. \n ум."]
+		"КарловЛН"	[style=filled shape=box label=" Карлов \n Леонид Николаевич \n р. \n ум."]
+		"БудкевичЕН"	[style=filled shape=box label=" Будкевич \n Евгения Николаевна \n р. \n ум."]
+		"БудкевичГр"	[style=filled shape=box label=" Будкевич \n Григорий \n р. \n ум."]
+		"КарловВЛ"	[style=filled shape=box label=" Карлов \n Виктор Леонидович \n р. \n ум."]
+		"БудкевичЛГ"	[style=filled shape=box label=" Будкевич \n Лидия Григорьевна \n р. хх.хх.1935 "]
+		"БудкевичСын"	[style=filled shape=box label=" ? \n ? \n р. "]
+		}
+		"МаркинаМн"	[style=filled shape=box label="Маркина \n Марина \n р. \n ум."]
+		"МаркинаАнна"	[style=filled shape=box label=" ? Маркина \n Анна \n р. "]
+		"МаркинВас"	[style=filled shape=box label=" ? Маркина \n Василиса \n р. хх.хх.2017"]
+		"МаркинаЕл"	[style=filled shape=box label=" ? Маркина \n ? Елена \n р. "]
+		"НазаренкоЕлена"	[style=filled shape=box label="? Назаренко \n Елена \n р. "]
+		"НазаренкоОльга"	[style=filled shape=box label="? Назаренко \n ? Ольга \n р. "]
+		"НазаренкоСВ"	[style=filled shape=box label="? Назаренко \n Стелла Викторовна \n р. "]
+		"ЛимайкинаОВ"	[style=filled shape=box label="Лимайкина \n Ольга Викторовна \n р. "]
+		"неЛимайкинН"	[style=filled shape=box label="? \n Николай \n р. "]
+		"КорчагинаНВ"	[style=filled shape=box label="Корчагина \n Наталья Викторовна \n р. "]
+		"КорчагинПав"	[style=filled shape=box label="Корчагин \n Павел \n р. "]
+		"неЛимайкинаАН"	[style=filled shape=box label="? \n Аглая Николаевна \n р. "]
+		"КорчагинаЕП"	[style=filled shape=box label="Корчагина \n Екатерина Павловна \n р. "]
+		"неКорчагинЭ"	[style=filled shape=box label="? \n Эрман \n р. "]
+	// союзы
+		"бракМаркинойАнны" [style=filled fillcolor=white shape=diamond label="+"]
+		{"МаркинаАнна"} -> "бракМаркинойАнны"
+		"бракМаркинойАнт" [style=filled fillcolor=white shape=diamond label="+"]
+		{"МаркинаАтМ"} -> "бракМаркинойАнт"
+		"бракМаркинойМн" [style=filled fillcolor=white shape=diamond label="+"]
+		{"МаркинаМн"} -> "бракМаркинойМн"
+		"бракМаркинаАл" [style=filled fillcolor=white shape=diamond label="+"]
+		{"МаркинАГ" "МаркинаМар"} -> "бракМаркинаАл"
+		"бракМаркинаМих" [style=filled fillcolor=white shape=diamond label="+"]
+		{"МаркинМГ" "МаркинаАл"} -> "бракМаркинаМих"
+		"бракНазаренкоМаркина" [style=filled fillcolor=white shape=diamond label="+"]
+		{"НазаренкоС" "НазаренкоМГ"} -> "бракНазаренкоМаркина"
+		"бракКузьмыДомны" [style=filled fillcolor=white shape=diamond label="+"]
+		{"Кузьма" "Домна"} -> "бракКузьмыДомны"
+		"бракМаркины" [style=filled fillcolor=white shape=diamond label="+"]
+		{"МаркинГ" "МаркинаАк"} -> "бракМаркины"
+		"бракКарловМаркина" [style=filled fillcolor=white shape=diamond label="+"]
+		{"КарловаКГ" "КарловАН"} -> "бракКарловМаркина"
+		"бракКарловы2" [style=filled fillcolor=white shape=diamond label="+"]
+		{"КарловВА" "КарловаА"} -> "бракКарловы2"
+		"бракХапатнюкКарлова" [style=filled fillcolor=white shape=diamond label="+"]
+		{"ХапатнюкВ" "ХапатнюкНА"} -> "бракХапатнюкКарлова"
+		"бракНазаренкоЗои" [style=filled fillcolor=white shape=diamond label="+"]
+		{"НазаренкоЗС"} -> "бракНазаренкоЗои"
+		"бракНазаренкоВиктора" [style=filled fillcolor=white shape=diamond label="+"]
+		{"НазаренкоВС" "НазаренкоЭмма"} -> "бракНазаренкоВиктора"
+		"бракКорчагинаПавла" [style=filled fillcolor=white shape=diamond label="+"]
+		{"КорчагинПав" "КорчагинаНВ"} -> "бракКорчагинаПавла"
+		"бракКорчагинойЕк" [style=filled fillcolor=white shape=diamond label="+"]
+		{"неКорчагинЭ" "КорчагинаЕП"} -> "бракКорчагинойЕк"
+		"бракЛимайкинойОльги" [style=filled fillcolor=white shape=diamond label="+"]
+		{"неЛимайкинН" "ЛимайкинаОВ"} -> "бракЛимайкинойОльги"
+		"бракЛимайкинНазаренко" [style=filled fillcolor=white shape=diamond label="+"]
+		{"ЛимайкинВ" "ЛимайкинаТС"} -> "бракЛимайкинНазаренко"
+		"бракКарловаНик" [style=filled fillcolor=white shape=diamond label="+"]
+		{"КарловНик"} -> "бракКарловаНик"
+		"бракБудкевичКарлова" [style=filled fillcolor=white shape=diamond label="+"]
+		{"БудкевичГр" "БудкевичЕН"} -> "бракБудкевичКарлова"
+		"бракКарловаЛеонида" [style=filled fillcolor=white shape=diamond label="+"]
+		{"КарловЛН"} -> "бракКарловаЛеонида"
+		"бракБудкевичЛидии" [style=filled fillcolor=white shape=diamond label="+"]
+		{"БудкевичЛГ"} -> "бракБудкевичЛидии"
+	// дети		
+		"ЛимайкинВ"
+		"ЛимайкинаТС"
+		"НазаренкоС"
+		"бракЛимайкинойОльги" -> "неЛимайкинаАН"
+		"бракЛимайкинНазаренко" -> "ЛимайкинаОВ"
+		"бракЛимайкинНазаренко" -> "КорчагинаНВ"
+		"бракНазаренкоЗои" -> "НазаренкоОльга"
+		"бракНазаренкоЗои" -> "НазаренкоЕлена"
+		"бракНазаренкоМаркина" -> "НазаренкоЗС"
+		"бракНазаренкоМаркина" -> "НазаренкоВС"
+		"бракНазаренкоМаркина" -> "ЛимайкинаТС"
+		"бракКорчагинаПавла" -> "КорчагинаЕП"
+		"бракНазаренкоВиктора" -> "НазаренкоСВ"
+		"бракМаркины" -> "НазаренкоМГ"
+		"бракКузьмыДомны" -> "МаркинГК"
+		"бракКузьмыДомны" -> "МаркинаСК"
+		"бракКузьмыДомны" -> "МаркинаГК"
+		"бракМаркинойАнны" -> "МаркинВас"
+		"бракМаркинойАнны" -> "МаркинаЕл"
+		"бракМаркинойМн" -> "МаркинаАнна"
+		"бракМаркинойАнт" -> "МаркинаМн"
+		"бракМаркинаМих" -> "МаркинАкМ"
+		"бракМаркинаМих" -> "МаркинВлМ"
+		"бракМаркинаМих" -> "МаркинЮМ"
+		"бракМаркинаМих" -> "МаркинаАтМ"
+		"бракМаркины" -> "МаркинМГ"
+		"бракМаркины" -> "МаркинАГ"
+		"бракМаркины" -> "Домна"
+		"бракМаркины" -> "КарловаКГ"
+		subgraph clusterКарловыБудкевич{ 
+		"бракКарловаНик" -> "КарловЛН"
+		"бракКарловаНик" -> "БудкевичЕН"
+		"бракКарловаНик" -> "КарловАН"
+		"бракКарловаЛеонида" -> "КарловВЛ"
+		"бракБудкевичЛидии" -> "БудкевичСын"
+		"бракБудкевичКарлова" -> "БудкевичЛГ"
+		}
+		"бракКарловМаркина" -> "ХапатнюкНА"
+		"бракКарловМаркина" -> "КопыловаЛА"
+		"бракКарловМаркина" -> "КарловВА"
+	}
+
+// *** Копыловы-старшие -- готово
+	// люди
+		subgraph clusterC{ style=dashed 
+		"КопыловГаврТроф"	[style=filled fillcolor=yellow shape=box label="Копылов \n Гаврил Трофимович \n р. \n ум. "]
+		"КопыловНГавр"	[style=filled fillcolor=yellow shape=box label="Копылов \n Николай Гаврилович \n р. хх.12.1887 \n ум. хх.05.1971 "]
+		"КопыловаМарфа"	[style=filled fillcolor=yellow shape=box label="Копылова \n Марфа Сергеевна \n р. хх.хх.1892 \n ум. хх.хх.1973 "]
+		"КопыловаПрНик"	[style=filled shape=box label="Копылова \n Прасковья Николаевна \n р. хх.хх.1931 \n ум. хх.09.1948 "]
+		"ГрибановЮА"	[style=filled shape=box label="Грибанов \n Юрий Анисимович \n р. \n ум. "]
+		"КопыловАнд"	[style=filled shape=box label="Копылов \n Андрей \n р. \n ум. "]
+		"КопыловаПелНик"	[style=filled shape=box label="Копылова \n Пелагея Николаевна \n р. 21.10.1918 \n ум. 22.10.1991 "]
+		subgraph cluster246{ style=dotted color=white
+		"ГригорьеваНА"	[style=filled shape=box label="Григорьева \n Нина Андреевна \n р. 01.01.1953 "]
+		"ГригорьевМих"	[style=filled shape=box label="Григорьев \n Михаил \n р. "]
+		subgraph cluster136{ style=dotted color=white
+		"ГригорьевИМ"	[style=filled shape=box label="Григорьев \n Илья Михайлович \n р. 31.07.1979 "]
+		"ПопенчукА"	[style=filled shape=box label="Попенчук \n Алёна \n р. 19.08.1983 "]
+		"ГригорьеваМИ"	[style=filled shape=box label="Григорьева \n Мария Ильинична \n р. 07.07.2010 "]
+		"ГригорьевРМ"	[style=filled shape=box label=" Григорьев \n Роман Витальевич \n р. 16.02.2006"]
+		}
+		"КарабинаЕМ"	[style=filled shape=box label="Карабина \n Екатерина Михайловна \n р. 10.12.1974 "]
+		"КарабинЕ"	[style=filled shape=box label="Карабин \n Евгений \n р. "]
+		"АндреевВ"	[style=filled shape=box label="Андреев \n Виталий \n р. "]
+		"АндреевЕВ"	[style=filled shape=box label="Андреев \n Евгений Витальевич \n р. 12.01.1997 "]
+		"АндреевСВ"	[style=filled shape=box label="Андреев \n Серафим Витальевич \n р. 17.04.2003 "]
+		"КарабинаДЕ"	[style=filled shape=box label="Карабина \n Дарья Евгеньевна \n р. 19.07.2009 "]
+		}
+		subgraph cluster465{ style=dotted
+		"ПоздняковаЕН"	[style=filled shape=box label="Позднякова \n Евдокия Николаевна \n р. 13.06.1923 \n ум. хх.хх.2016"]
+		"ПоздняковНИ"	[style=filled shape=box label="Поздняков \n  Николай Иванович \n р. хх.хх.1921 \n ум. "]
+		"ПоздняковЕН"	[style=filled shape=box label="Поздняков \n Егор Николаевич \n р. 02.01.1958 "]
+		"ПоздняковПН"	[style=filled shape=box label="Поздняков \n Пётр Николаевич \n р. 16.06.1951 \n ум. 09.06.1995"]
+		"ПоздняковаТат"	[style=filled shape=box label="Позднякова \n Татьяна \n р. "]
+		"ПоздняковаНат"	[style=filled shape=box label="Позднякова \n Наталья \n р. "]
+		"ФроловаРН"	[style=filled shape=box label="Фролова \n Раиса Николаевна \n р. 07.04.1948 "]
+		"ФроловАА"	[style=filled shape=box label="Фролов \n Алексей Андреевич \n р. \n ум. 07.08.2000 "]
+		"ФроловаОА"	[style=filled shape=box label="Фролова \n Ольга Алексеевна \n р. "]
+		"ФроловаНА"	[style=filled shape=box label="Фролова \n Надежда Алексеевна \n р. "]
+		"ВедищеваЛА"	[style=filled shape=box label="Ведищева \n Людмила Алексеевна \n р. "]
+		"ВедищевЕМ"	[style=filled shape=box label="Ведищев \n Евгений Михайлович \n р. "]
+		"НиколаеваЛН"	[style=filled shape=box label="Николаева \n Любовь Николаевна \n р. 15.09.1956 "]
+		"НиколаевАл"	[style=filled shape=box label="Николаев \n Алексей \n р. "]
+		"НиколаевМА"	[style=filled shape=box label="Николаев \n Максим Алексеевич \n р. "]
+		"НиколаеваВА"	[style=filled shape=box label="Николаева \n Вера Алексеевна \n р. "]
+		"ПоздняковаЮЕ"	[style=filled shape=box label="Позднякова \n Юлия Егоровна \n р. 20.09.1983 "]
+		"ПоздняковДЕ"	[style=filled shape=box label="Поздняков \n Дмитрий Егорович \n р. хх.хх.1989 "]
+		"ПоздняковаОП"	[style=filled shape=box label="Позднякова \n Олеся Петровна \n р. 20.09.1983 "]
+		"ПоздняковАП"	[style=filled shape=box label="Поздняков \n Алексей Петрович \n р. хх.хх.1989 "]
+		}
+		subgraph clusterИванНиколаевич{ style=dotted color=white
+		"КопыловИванНик"	[style=filled shape=box label="Копылов \n Иван Николаевич \n р. 21.02.1921 "]
+		"КопыловаАнастасия"	[style=filled shape=box label="Копылова \n Анастасия Ивановна \n р. 20.02.1927 "]
+		}
+
+	// союзы
+		subgraph clusterИванНиколаевич{// style=dotted //color=white
+		"бракКопыловаИН" [style=filled fillcolor=white shape=diamond label="+"]
+		{"КопыловИванНик" "КопыловаАнастасия"} -> "бракКопыловаИН"
+		}
+		subgraph cluster465{ style=dotted color=white
+		"бракНиколаевПозднякова" [style=filled fillcolor=white shape=diamond label="+"]
+		{"НиколаевАл" "НиколаеваЛН"} -> "бракНиколаевПозднякова"
+		"бракВедищевФролова" [style=filled fillcolor=white shape=diamond label="+"]
+		{"ВедищевЕМ" "ВедищеваЛА"} -> "бракВедищевФролова"
+		"бракФроловПозднякова" [style=filled fillcolor=white shape=diamond label="+"]
+		{"ФроловАА" "ФроловаРН"} -> "бракФроловПозднякова"
+		"бракПоздняковЕгор" [style=filled fillcolor=white shape=diamond label="+"]
+		{"ПоздняковЕН" "ПоздняковаНат"} -> "бракПоздняковЕгор"
+		"бракПоздняковПётр" [style=filled fillcolor=white shape=diamond label="+"]
+		{"ПоздняковПН" "ПоздняковаТат"} -> "бракПоздняковПётр"
+		"бракПоздняковКопылова" [style=filled fillcolor=white shape=diamond label="+"]
+		{"ПоздняковНИ" "ПоздняковаЕН"} -> "бракПоздняковКопылова"
+		}
+		subgraph cluster246{ style=dotted color=white
+		"бракАндреевГригорьева" [style=filled fillcolor=white shape=diamond label="+"]
+		{"АндреевВ" "КарабинаЕМ"} -> "бракАндреевГригорьева"
+		"бракКарабинГригорьева" [style=filled fillcolor=white shape=diamond label="+"]
+		{"КарабинЕ" "КарабинаЕМ"} -> "бракКарабинГригорьева"
+		subgraph cluster136{ style=dotted color=white
+		"бракПопенчук" [style=filled fillcolor=white shape=diamond label="+"]
+		{"ПопенчукА"} -> "бракПопенчук"
+		"бракГригорьевПопенчук" [style=filled fillcolor=white shape=diamond label="+"]
+		{"ГригорьевИМ" "ПопенчукА"} -> "бракГригорьевПопенчук"
+		}
+		"бракГригорьевКопылова" [style=filled fillcolor=white shape=diamond label="+"]
+		{"ГригорьевМих" "ГригорьеваНА"} -> "бракГригорьевКопылова"
+		}
+		"бракКопыловаГаврила" [style=filled fillcolor=white shape=diamond label="+"]
+		{"КопыловГаврТроф"} -> "бракКопыловаГаврила"
+		"бракКопыловыНикМарфа" [style=filled fillcolor=white shape=diamond label="+"]
+		{"КопыловНГавр" "КопыловаМарфа"} -> "бракКопыловыНикМарфа"
+		"бракКопыловыАндПел" [style=filled fillcolor=white shape=diamond label="+"]
+		{"КопыловАнд" "КопыловаПелНик"} -> "бракКопыловыАндПел"
+		"бракГрибановКопылова" [style=filled fillcolor=white shape=diamond label="+"]
+		{"ГрибановЮА" "КопыловаПелНик"} -> "бракГрибановКопылова"
+
+	// дети
+		"бракКопыловыНикМарфа" -> "КопыловИванНик"
+		"бракПоздняковЕгор" -> "ПоздняковДЕ"
+		"бракПоздняковЕгор" -> "ПоздняковаЮЕ"
+		"бракПоздняковПётр" -> "ПоздняковАП"
+		"бракПоздняковПётр" -> "ПоздняковаОП"
+		"бракНиколаевПозднякова" -> "НиколаевМА"
+		"бракНиколаевПозднякова" -> "НиколаеваВА"
+		"бракФроловПозднякова" -> "ВедищеваЛА"
+		"бракФроловПозднякова" -> "ФроловаНА"
+		"бракФроловПозднякова" -> "ФроловаОА"
+		"бракПоздняковКопылова" -> "ФроловаРН"
+		"бракПоздняковКопылова" -> "НиколаеваЛН"
+		"бракПоздняковКопылова" -> "ПоздняковЕН"
+		"бракПоздняковКопылова" -> "ПоздняковПН"
+		"бракКопыловыНикМарфа" -> "ПоздняковаЕН"
+		"бракАндреевГригорьева" -> "АндреевЕВ"
+		"бракАндреевГригорьева" -> "АндреевСВ"
+		"бракКарабинГригорьева" -> "КарабинаДЕ"
+		"бракПопенчук" -> "ГригорьевРМ"
+		"бракГригорьевПопенчук" -> "ГригорьеваМИ"
+		"бракГригорьевКопылова" -> "ГригорьевИМ"
+		"бракГригорьевКопылова" -> "КарабинаЕМ"
+		"бракКопыловыАндПел" -> "ГригорьеваНА"
+		"бракКопыловыНикМарфа" -> "КопыловСН"
+		"бракКопыловыНикМарфа" -> "КопыловаПрНик"
+		"бракКопыловыНикМарфа" -> "КопыловаПелНик"
+		"бракКопыловаГаврила" -> "КопыловНГавр"
+
+// *** Копыловы-Ивановны -- готово
+	subgraph clusterИванНиколаевич{// style=dotted color=white
+	subgraph cluster1346{ style=dotted color=white
+	// люди
+		"НечушкинаОИ"	[style=filled shape=box label="Нечушкина \n Ольга Ивановна \n р. 26.02.1967 "]
+		"НечушкинСИ"	[style=filled shape=box label="Нечушкин \n Сергей Иванович \n р. 14.03.1967 "]
+		"НечушкинаАС"	[style=filled shape=box label="Нечушкина \n Анастасия Сергеевна \n р. 19.11.1995 "]
+		"НечушкинДС"	[style=filled shape=box label="Нечушкин \n Дмитрий Сергеевич \n р. 03.04.1989 "]
+		"НечушкинаДочьДмитриевна"	[style=filled shape=box label="Нечушкина \n ? Дмитриевна \n р. 23.08.2012 "]
+		"ВолковМГ"	[style=filled shape=box label="Волков \n Михаил Геннадьевич \n р. 15.04.1958 "]
+		"ВолковаВИ"	[style=filled shape=box label="Волкова \n Вера Ивановна \n р. 03.08.1958 "]
+		"ВолковАМ"	[style=filled shape=box label="Волков \n Андрей Михайлович \n р. 01.03.1979 "]
+		"ВолковСМ"	[style=filled shape=box label="Волков \n Сергей Михайлович \n р. 25.11.1982 "]
+		"МарущакНМ"	[style=filled shape=box label="Марущак \n Наталья Михайловна \n р. 05.10.1981 "]
+		"МарущакВ"	[style=filled shape=box label="Марущак \n Владимир \n р. \n ум. 10.11.2013 "]
+		"МарущакИВ"	[style=filled shape=box label="Марущак \n Иван Владимирович \n р. 17.01.2009 "]
+	// союзы
+		"бракМарущакВолкова" [style=filled fillcolor=white shape=diamond label="+"]
+		{"МарущакВ" "МарущакНМ"} -> "бракМарущакВолкова"
+		"бракВолковКопылова" [style=filled fillcolor=white shape=diamond label="+"]
+		{"ВолковМГ" "ВолковаВИ"} -> "бракВолковКопылова"
+		"бракНечушкинКопылова" [style=filled fillcolor=white shape=diamond label="+"]
+		{"НечушкинСИ" "НечушкинаОИ"} -> "бракНечушкинКопылова"
+		"бракНечушкинаДмитрия" [style=filled fillcolor=white shape=diamond label="+"]
+		{"НечушкинДС"} -> "бракНечушкинаДмитрия"		
+	// дети
+		"бракМарущакВолкова" -> "МарущакИВ"
+		"бракВолковКопылова" -> "ВолковАМ"
+		"бракВолковКопылова" -> "ВолковСМ"
+		"бракВолковКопылова" -> "МарущакНМ"
+		"бракКопыловаИН" -> "ВолковаВИ"
+		"бракНечушкинаДмитрия" -> "НечушкинаДочьДмитриевна"
+		"бракНечушкинКопылова" -> "НечушкинДС"
+		"бракНечушкинКопылова" -> "НечушкинаАС"
+		"бракКопыловаИН" -> "НечушкинаОИ"
+		}}
+
+// *** Копыловы-Ивановичи -- готово
+	subgraph clusterИванНиколаевич{// style=dotted color=white
+	subgraph cluster1347{ style=dotted color=white
+	// люди
+		"КопыловПИв" [style=filled shape=box label="Копылов \n Пётр Иванович \n р. 24.06.1948 "]
+		"КопыловаМИв" [style=filled shape=box label="Копылова \n Мария Ивановна \n р. 07.07.1949 "]
+		"КопыловСашок" [style=filled shape=box label="Копылов 'Сашок' \n Александр Петрович \n р. 16.05.1971 "]
+		"КопыловаНат" [style=filled shape=box label="Копылова \n Наталья \n р. "]
+		"КопыловаЕСаш" [style=filled shape=box label="Копылова \n Екатерина Александровна \n р. 03.07.1995 "]
+		"КопыловаДСаш" [style=filled shape=box label="Копылова \n Дарья Александровна \n р. 14.01.2002 "]
+		"КопыловаМСаш" [style=filled shape=box label="Копылова \n Мария Александровна \n р. 14.01.2002 "]
+		"СоколовСер" [style=filled shape=box label="Соколов \n Сергей \n р. "]
+		"СоколоваНП" [style=filled shape=box label="Соколова \n Наталья Петровна \n р. "]
+		"СоколовИС" [style=filled shape=box label="Соколов \n Илья Сергеевич \n р. 17.09.2001 "]
+		"СоколовНС" [style=filled shape=box label="Соколов \n Никита Сергеевич \n р. 10.06.2004"]
+		"КопыловНикИв" [style=filled shape=box label="Копылов \n Николай Иванович \n р. 01.05.1950"]
+		"КопыловаНатНик" [style=filled shape=box label="Копылова \n Наталья Николаевна \n р. "]
+		"КопыловННик" [style=filled shape=box label="Копылов \n Николай Николаевич \n р. 02.05.1975"]
+		"КопыловАНик" [style=filled shape=box label="Копылов \n Андрей Николаевич \n р. хх.хх.1984 "]
+		"КопыловаОк" [style=filled shape=box label="Копылова \n Оксана \n р. "]
+		"КопыловаПол" [style=filled shape=box label="Копылова \n Полина Андреевна \n р. "]
+		"КопыловВлИв" [style=filled shape=box label="Копылов \n Владимир Иванович \n р. 25.05.1952 "]
+		"КопыловПВл" [style=filled shape=box label="Копылов \n Павел Владимирович \n р. 02.05.1975 "]
+		"КопыловаМП" [style=filled shape=box label="Копылова \n Мария Павловна \n р. 16.08.2008 "]
+		"КопыловаВП" [style=filled shape=box label="Копылова \n Валентина Павловна \n р. "]
+		"КопыловКВл" [style=filled shape=box label="Копылов \n Кирилл Владимирович \n р. 27.04.1986 "]
+		"КопыловКириллович" [style=filled shape=box label="Копылов \n ? \n р. "]
+		"КопыловаКирилловна1" [style=filled shape=box label="Копылова \n ? \n р. "]
+		"КопыловаКирилловна2" [style=filled shape=box label="Копылова \n ? \n р. "]
+		"КопыловаНиВик" [style=filled shape=box label="Копылова \n Нина Викторовна \n р. "]
+		"КопыловАнИв" [style=filled shape=box label="Копылов 'генерал' \n Анатолий Иванович \n р. 18.05.1954 "]
+		"КопыловаНН" [style=filled shape=box label="Копылова \n Наталья Николаевна \n р. 04.11.1959 "]
+		"КопыловаМАн" [style=filled shape=box label="Копылова \n Мария Анатольевна \n р. "]
+		"КопыловГерман" [style=filled shape=box label="Копылов \n Герман \n р. "]
+		"КопыловаАсАн" [style=filled shape=box label="? \n Анастасия Анатольевна \n р. 23.04.1981 "]
+		"Нуэс" [style=filled shape=box label="? \n Нуэс \n р. "]
+		"МНуэсович" [style=filled shape=box label="? \n Марк Нуэсович \n р. хх.01.2009 "]
+		"АНуэсович" [style=filled shape=box label="? \n Адриан Нуэсович \n р. 08.11.2004 "]
+		"КопыловАлИв" [style=filled shape=box label="Копылов \n Александр Иванович \n р. 24.11.1961 "]
+		"КопыловаЕлАн" [style=filled shape=box label="Копылова \n Елена Анатольевна \n р. 18.04.1964 "]
+		"КопыловИАл" [style=filled shape=box label="Копылов \n Иван Александрович \n р. 26.04.198х "]
+		"КопыловАрАл" [style=filled shape=box label="Копылов \n Артём Александрович \n р. хх.хх.198х "]
+	// союзы
+		"бракКопыловыНуэсАнаст" [style=filled fillcolor=white shape=diamond label="+"]
+		{"Нуэс" "КопыловаАсАн"} -> "бракКопыловыНуэсАнаст"
+		"бракКопыловаКВл" [style=filled fillcolor=white shape=diamond label="+"]
+		{"КопыловКВл"} -> "бракКопыловаКВл"
+		"бракКопыловаПВл" [style=filled fillcolor=white shape=diamond label="+"]
+		{"КопыловПВл"} -> "бракКопыловаПВл"
+		"бракКопыловаАлИв" [style=filled fillcolor=white shape=diamond label="+"]
+		{"КопыловАлИв" "КопыловаЕлАн"} -> "бракКопыловаАлИв"
+		"бракКопыловаАнИв" [style=filled fillcolor=white shape=diamond label="+"]
+		{"КопыловАнИв" "КопыловаНН"} -> "бракКопыловаАнИв"
+		"бракКопыловаВлИв" [style=filled fillcolor=white shape=diamond label="+"]
+		{"КопыловВлИв" "КопыловаНиВик"} -> "бракКопыловаВлИв"
+		"бракКопыловаАНик" [style=filled fillcolor=white shape=diamond label="+"]
+		{"КопыловАНик" "КопыловаОк"} -> "бракКопыловаАНик"
+		"бракКопыловаНикИв" [style=filled fillcolor=white shape=diamond label="+"]
+		{"КопыловНикИв" "КопыловаНатНик"} -> "бракКопыловаНикИв"
+		"бракСоколовКопылова" [style=filled fillcolor=white shape=diamond label="+"]
+		{"СоколовСер" "СоколоваНП"} -> "бракСоколовКопылова"
+		"бракКопыловойМАн" [style=filled fillcolor=white shape=diamond label="+"]
+		{"КопыловаМАн"} -> "бракКопыловойМАн"
+		"бракКопыловаСашка" [style=filled fillcolor=white shape=diamond label="+"]
+		{"КопыловСашок" "КопыловаНат"} -> "бракКопыловаСашка"
+		"бракКопыловаПИв" [style=filled fillcolor=white shape=diamond label="+"]
+		{"КопыловПИв" "КопыловаМИв"} -> "бракКопыловаПИв"
+	// дети
+		"бракКопыловаАлИв" -> "КопыловАрАл"
+		"бракКопыловаАлИв" -> "КопыловИАл"
+		"бракКопыловыНуэсАнаст" -> "МНуэсович"
+		"бракКопыловыНуэсАнаст" -> "АНуэсович"
+		"бракКопыловаАнИв" -> "КопыловаАсАн"
+		"бракКопыловойМАн" -> "КопыловГерман"
+		"бракКопыловаАнИв" -> "КопыловаМАн"
+		"бракКопыловаКВл" -> "КопыловКириллович"
+		"бракКопыловаКВл" -> "КопыловаКирилловна1"
+		"бракКопыловаКВл" -> "КопыловаКирилловна2"
+		"бракКопыловаПВл" -> "КопыловаВП"
+		"бракКопыловаПВл" -> "КопыловаМП"
+		"бракКопыловаВлИв" -> "КопыловКВл"
+		"бракКопыловаВлИв" -> "КопыловПВл"
+		"бракКопыловаАНик" -> "КопыловаПол"
+		"бракКопыловаНикИв" -> "КопыловАНик"
+		"бракКопыловаНикИв" -> "КопыловННик"
+		"бракКопыловаСашка" -> "КопыловаМСаш"
+		"бракКопыловаСашка" -> "КопыловаДСаш"
+		"бракКопыловаСашка" -> "КопыловаЕСаш"
+		"бракКопыловаПИв" -> "КопыловСашок"
+		"бракСоколовКопылова" -> "СоколовНС"
+		"бракСоколовКопылова" -> "СоколовИС"
+		"бракКопыловаПИв" -> "СоколоваНП"
+		"бракКопыловаИН" -> "КопыловПИв"
+		"бракКопыловаИН" -> "КопыловНикИв"
+		"бракКопыловаИН" -> "КопыловВлИв"
+		"бракКопыловаИН" -> "КопыловАнИв"
+		"бракКопыловаИН" -> "КопыловАлИв"
+		}}
+
+		}
+	}
+	subgraph clusterСоСтороныОксаны{
+
+// *** Валовы
+	// люди
+		subgraph clusterВаловы{ style=dashed 
+		//"NN"	[style=filled shape=box label=" забыл... \n  \n р. \n ум. "]
+		}
+	// союзы
+		//"бракКопыловаИН" [style=filled fillcolor=white shape=diamond label="+"]
+		//{"КопыловИванНик" "КопыловаАнастасия"} -> "бракКопыловаИН"
+
+	// дети
+		//"бракПоздняковЕгор" -> "ПоздняковДЕ"
+
+// *** Минжулины
+	// люди
+		subgraph clusterМинжулины{ style=dashed 
+		"МинжулинПВ"	[style=filled fillcolor=lightblue shape=box label=" Минжулин \n Пётр Васильевич \n р. \n ум. 1932"]
+		"КороткихЕП"	[style=filled fillcolor=lightblue shape=box label=" Колотова (Коротких) \n Ефросинья Павловна \n р. 09.09.1882(1872)\n ум. 27.08.1965"]
+		"КолотовСТ"	[style=filled shape=box label=" Колотов \n Самуил Терентьевич \n р. \n ум. "]
+		"МинжулинМП"	[style=filled fillcolor=lightblue shape=box label=" Минжулин \n Матвей Петрович \n р. 1906\n ум. 12.04.1968"]
+		"МинжулинаПА"	[style=filled fillcolor=lightblue shape=box label=" Минжулина (Пономарёва) \n Пелагея Анисимовна \n р. 13.10.1915\n ум. 19(24).01.1993"]
+		"МинжулинИМ"	[style=filled shape=box label=" Минжулин \n Иван Матвеевич \n ум. во младенчестве"]
+		"МинжулинаГМ"	[style=filled shape=box label=" Валова (Минжулина) \n Галина Матвеевна \n р. 09.09.1947\n ум. 20.06.2004"]
+		"ВаловНикИв"	[style=filled shape=box label=" Валов \n Николай Иванович \n р. 29.11.1926 \n ум. 15.07.2003"]
+		"МинжулинаЛМ"	[style=filled shape=box label=" Николаева (Минжулина) \n Любовь Матвеевна \n р. 03.04.1956\n ум. 29.01.2005"]
+		"СмирновВлад"	[style=filled shape=box label=" Смирнов \n Владимир \n р. "]
+		"НиколаевАлПав"	[style=filled shape=box label=" Николаев \n Александр Павлович \n р. "]
+		"МинжулинаВМ"	[style=filled shape=box label=" Шепель (Минжулина) \n Валентина Матвеевна \n р. 12.08.1938\n ум. 07.07.1991"]
+		"ШепельВА"	[style=filled shape=box label=" Шепель \n Виктор Александрович \n р. 14.04.1939 \n ум. 16.03.1983"]
+		"ШепельЮВ"	[style=filled shape=box label=" Шепель \n Юрий Викторович \n р. 30.10.1962 \n ум. 28.03.2019"]
+		"ШепельОлВ"	[style=filled shape=box label=" Шепель (Трофимова) \n Ольга Валерьевна \n р. хх.10.1962 "]
+		"КольцоваЕВ"	[style=filled shape=box label=" Кольцова (Шепель) \n Елена Викторовна \n р. 12.07.1964 "]
+		"КольцовВА"	[style=filled shape=box label=" Кольцов \n Виктор Анатольевич \n р. хх.хх.1960 "]
+		"КольцоваЮВ"	[style=filled shape=box label=" Кольцова \n Юлия Викторовна \n р. 08.07.1987 "] //Артём, Маша
+		"КольцовАртём"	[style=filled shape=box label=" Кольцов \n Артём \n р. хх.хх.2ххх "]
+		"КольцоваМаша"	[style=filled shape=box label=" Кольцова \n Мария \n р. хх.хх.2ххх "]
+		"ИвановаАВ"	[style=filled shape=box label=" Иванова (Кольцова) \n Анастасия Викторовна \n р. 29.01.1985 "]//Варвара, 
+		"ИвановАл"	[style=filled shape=box label=" Иванов \n Александр \n р. хх.хх.1985 "]
+		"ИвановаВА"	[style=filled shape=box label=" Иванова \n Валентина Александровна \n р. 05.10.2008 "]
+		"МинжулинаНМ"	[style=filled shape=box label=" Акимова (Минжулина) \n Нина Матвеевна \n р. 27.04.1940"]
+		"АкимовАЛ"	[style=filled shape=box label="Акимов \n Анатолий Лукич \n р. 22.03.1937 \n ум. 16.07.2006"]
+		"ЧерныхИА"	[style=filled shape=box label=" Черных (Акимова) \n Инна Анатольевна \n р. 02.06.1965"]
+		"ЧерныхВЛ"	[style=filled shape=box label=" Черных \n Владимир Ливерьевич \n р. 20.06.1962"]
+		"ЧерныхАВ"	[style=filled shape=box label=" Черных \n Александр Владимирович \n р. 18.01.1992"]
+		"АкимовВА"	[style=filled shape=box label="Акимов \n Владислав Анатольевич \n р. 13.03.1971"]
+		"АкимоваЕВ"	[style=filled shape=box label="Акимова (Третьякова) \n Екатерина Викторовна \n р. 16.01.1976"]
+		"АкимовМВ"	[style=filled shape=box label="Акимов \n Матвей Владиславович \n р. 29.10.2002"]
+		"МинжулинаАМ"	[style=filled shape=box label=" Качанова (Минжулина) \n Антонина Матвеевна \n р. 18.06.1945\n ум. 06.05.2002"]
+		"КачановАА"	[style=filled shape=box label=" Качанов \n Александр Андреевич \n р. 10.09.1945 \n ум. 12.02.2007"]
+		"МартемьяноваТА"	[style=filled shape=box label=" Мартемьянова (Качанова) \n Татьяна Александровна \n р. 24.03.1975"]
+		"МартемьяновАП"	[style=filled shape=box label=" Мартемьянов \n Андрей Петрович \n р."]
+		"ШакироваНА"	[style=filled shape=box label=" Шакирова (Качанова) \n Наталья Александровна \n р. 08.05.1972"]
+		"ШакировМ"	[style=filled shape=box label=" Шакиров \n Максим \n р. "]
+		"ШакировОМ"	[style=filled shape=box label=" Шакиров \n Олег Максимович \n р. "]
+		"ШакировГМ"	[style=filled shape=box label=" Шакиров \n Григорий Максимович \n р. "]
+		"МинжулинаТМ"	[style=filled shape=box label=" Красина (Минжулина) \n Татьяна Матвеевна \n р. 25.08.1949\n ум. "]
+		"ХохловВТ"	[style=filled shape=box label="Хохлов \n Виктор Тимофеевич \n р. 12.06.1948 "]
+		"КарамышеваЕВ"	[style=filled shape=box label="Карамышева (Хохлова) \n Елена Викторовна \n р. 02.03.1972 "]
+		"КарамышевВБ"	[style=filled shape=box label="Карамышев \n Вячеслав Борисович \n р. 16.06.1970 "]
+		"КарамышевАВ"	[style=filled shape=box label="Карамышев \n Андрей Вячеславович \n р. 16.07.1999 "]
+		"КарамышеваИВ"	[style=filled shape=box label="Карамышев \n Ирина Вячеславовна \n р. "]
+		"КрасинНВ"	[style=filled shape=box label="Красин \n Николай Викторович \n р. 04.07.1946 "]
+		"КрасинДенНик"	[style=filled shape=box label="Красин \n Денис Николаевич \n р. 30.07.1983 "]
+		"КрасинаНБ"	[style=filled shape=box label="Красина (Глушенкова) \n Наталья Борисовна \n р. хх.хх.1975 "]
+		"КрасинаАлДен"	[style=filled shape=box label="Красина \n Алиса Денисовна \n р. 19.04.2005 "]
+		}
+			"СоловьянТО"	[style=filled shape=box label="Соловьян\n Татьяна Олеговна \n р. хх.09.1955"]
+			"РябоконьЛГ"	[style=filled shape=box label="Рябоконь (Минжулина) \n Лариса Геннадьевна \n р. 29.01.1984"]
+			"РябоконьМих"	[style=filled shape=box label="Рябоконь \n Михаил \n р. 31.08.1983"] 
+			"РябоконьВМ"	[style=filled shape=box label="Рябоконь \n Владислав Михайлович \n р. 20.09.2019"]
+			/*subgraph clusterПорядокНеудачаМинжулинаГМ{ color=white		
+			"СадыковаЕЖ"	[style=filled shape=box label="Садыкова\n Елена Жейдымаковна "]
+			"МинжулинЕвг"	[style=filled shape=box label="Минжулин \n Евгений Геннадьевич \n р. 18.02.1979 \n ум. 13.09.1979 "]
+		}*/
+	// союзы
+		subgraph clusterМинжулины{ style=dashed 
+		"бракМартемьяновКачанова" [style=filled fillcolor=white shape=diamond label="+"]
+		{"МартемьяновАП" "МартемьяноваТА"} -> "бракМартемьяновКачанова"
+		"бракШакировКачанова" [style=filled fillcolor=white shape=diamond label="+"]
+		{"ШакировМ" "ШакироваНА"} -> "бракШакировКачанова"
+		subgraph clusterПорядокАкимовы{ color=white
+		"бракАкимовТретьякова" [style=filled fillcolor=white shape=diamond label="+"]
+		{"АкимоваЕВ" "АкимовВА"} -> "бракАкимовТретьякова"
+		"бракЧерныхАкимова" [style=filled fillcolor=white shape=diamond label="+"]
+		{"ЧерныхИА" "ЧерныхВЛ"} -> "бракЧерныхАкимова"
+		}
+		subgraph clusterПорядокШепели{ color=white
+		"бракИвановКольцова" [style=filled fillcolor=white shape=diamond label="+"]
+		{"ИвановаАВ" "ИвановАл"} -> "бракИвановКольцова"
+		"бракТрофимоваШепель" [style=filled fillcolor=white shape=diamond label="+"]
+		{"ШепельОлВ" "ШепельЮВ"} -> "бракТрофимоваШепель"
+		"бракКольцовШепель" [style=filled fillcolor=white shape=diamond label="+"]
+		{"КольцоваЕВ" "КольцовВА"} -> "бракКольцовШепель"
+		"бракКольцоваЮля" [style=filled fillcolor=white shape=diamond label="+"]
+		{"КольцоваЮВ" } -> "бракКольцоваЮля"
+		}
+		subgraph clusterПорядокМинжулинаТМ{ color=white
+		"бракМинжулинойТМ1" [style=filled fillcolor=white shape=diamond label="+1"]
+		{"МинжулинаТМ" "ХохловВТ"} -> "бракМинжулинойТМ1"
+		"бракМинжулинойТМ2" [style=filled fillcolor=white shape=diamond label="+2"]
+		{"МинжулинаТМ" "КрасинНВ"} -> "бракМинжулинойТМ2"
+		"бракКрасинГлушенкова" [style=filled fillcolor=white shape=diamond label="+"]
+		{"КрасинаНБ" "КрасинДенНик"} -> "бракКрасинГлушенкова"
+		"бракКарамышевХохлова" [style=filled fillcolor=white shape=diamond label="+"]
+		{"КарамышевВБ" "КарамышеваЕВ"} -> "бракКарамышевХохлова"
+		}
+		"бракКачановМинжулина" [style=filled fillcolor=white shape=diamond label="+"]
+		{"МинжулинаАМ" "КачановАА"} -> "бракКачановМинжулина"
+		"бракАкимовМинжулина" [style=filled fillcolor=white shape=diamond label="+"]
+		{"МинжулинаНМ" "АкимовАЛ"} -> "бракАкимовМинжулина"
+		"бракШепельМинжулина" [style=filled fillcolor=white shape=diamond label="+"]
+		{"МинжулинаВМ" "ШепельВА"} -> "бракШепельМинжулина"
+		"бракМинжулинПономарёва" [style=filled fillcolor=white shape=diamond label="+"]
+		{"МинжулинМП" "МинжулинаПА"} -> "бракМинжулинПономарёва"
+		"бракМинжулинКоротких" [style=filled fillcolor=white shape=diamond label="+"]
+		{"МинжулинПВ" "КороткихЕП"} -> "бракМинжулинКоротких"
+		"бракКолотовКоротких" [style=filled fillcolor=white shape=diamond label="+"]
+		{"КолотовСТ" "КороткихЕП"} -> "бракКолотовКоротких"
+		"бракВаловаМинжулиной" [style=filled fillcolor=white shape=diamond label="+"]
+		{"МинжулинаГМ" "ВаловНикИв"} -> "бракВаловаМинжулиной"
+		"бракМинжулинойЛМ1" [style=filled fillcolor=white shape=diamond label="+"]
+		{"МинжулинаЛМ" "СмирновВлад"} -> "бракМинжулинойЛМ1"
+		"бракМинжулинойЛМ2" [style=filled fillcolor=white shape=diamond label="+"]
+		{"МинжулинаЛМ" "НиколаевАлПав"} -> "бракМинжулинойЛМ2"
+
+		}
+			"бракМинжулинаГМ2" [style=filled fillcolor=white shape=diamond label="+2"]
+			{"СоловьянТО" "МинжулинГМ"} -> "бракМинжулинаГМ2"
+			"бракРябоконьМинжулина" [style=filled fillcolor=white shape=diamond label="+"]
+			{"РябоконьМих" "РябоконьЛГ"} -> "бракРябоконьМинжулина"
+			/*subgraph clusterПорядокНеудачаМинжулинаГМ{ color=white	
+			"бракМинжулинаГМ1" [style=filled fillcolor=white shape=diamond label="+1"]
+			{"СадыковаЕЖ" "МинжулинГМ"} -> "бракМинжулинаГМ1"
+		}*/
+	// дети
+		"бракРябоконьМинжулина" -> "РябоконьВМ"
+		"бракМинжулинКоротких" -> "МинжулинМП"
+		"бракМинжулинПономарёва" -> "МинжулинГМ"
+		"бракМинжулинПономарёва" -> "МинжулинаАМ"
+		"бракМинжулинПономарёва" -> "МинжулинаТМ"
+		"бракМинжулинПономарёва" -> "МинжулинаНМ"
+		"бракМинжулинПономарёва" -> "МинжулинаЛМ"
+		"бракМинжулинПономарёва" -> "МинжулинаВМ"
+		"бракМинжулинПономарёва" -> "МинжулинаГМ"
+		"бракМинжулинПономарёва" -> "МинжулинИМ"
+		"бракШепельМинжулина" -> "ШепельЮВ"
+		"бракШепельМинжулина" -> "КольцоваЕВ"
+		"бракКольцовШепель" -> "КольцоваЮВ"
+		"бракКольцоваЮля" -> "КольцовАртём"
+		"бракКольцоваЮля" -> "КольцоваМаша"
+		"бракКольцовШепель" -> "ИвановаАВ"
+		"бракИвановКольцова" -> "ИвановаВА"
+		//"бракМинжулинаГМ1" -> "МинжулинЕвг"
+		"бракМинжулинаГМ2" -> "РябоконьЛГ"
+		"бракАкимовМинжулина" -> "ЧерныхИА"
+		"бракЧерныхАкимова" -> "ЧерныхАВ"
+		"бракАкимовМинжулина" -> "АкимовВА"
+		"бракАкимовТретьякова" -> "АкимовМВ"
+		"бракКачановМинжулина" -> "МартемьяноваТА"
+		"бракКачановМинжулина" -> "ШакироваНА"
+		"бракШакировКачанова" -> "ШакировОМ"
+		"бракШакировКачанова" -> "ШакировГМ"
+		"бракМинжулинойТМ1" -> "КарамышеваЕВ"
+		"бракКарамышевХохлова" -> "КарамышевАВ"
+		"бракКарамышевХохлова" -> "КарамышеваИВ"
+		"бракМинжулинойТМ2" -> "КрасинДенНик"
+		"бракКрасинГлушенкова" -> "КрасинаАлДен"
+	}
+}
